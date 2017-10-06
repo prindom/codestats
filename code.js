@@ -1,3 +1,5 @@
+slides = [];
+
 $(document).ready(function() {
   $.get(
       "https://codestats.net/api/users/datguy",
@@ -6,7 +8,24 @@ $(document).ready(function() {
          animateData(data);
       }
   );
+  let slideNum = window.prompt("Enter number of slides", 3);
+
+  for (var i = 0; i <= slideNum; i++) {
+    slides[i] = $("<div class='slide' id='slide"+i+"'></div>");
+  }
+
+  slides[0].html("<h1>Title</h1>");
+
+  showSlides();
+
 });
+
+function showSlides() {
+  console.log(slides);
+  for (var i = 0; i <= slides.length; i++) {
+    $("body").append(slides[i]);
+  }
+}
 
 function animateData(data) {
   $username = data.user;
